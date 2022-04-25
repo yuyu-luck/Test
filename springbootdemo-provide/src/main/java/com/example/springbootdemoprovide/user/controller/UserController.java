@@ -88,6 +88,15 @@ public class UserController {
         return list;
     }
 
+    @RequestMapping("list")
+    public String register(@RequestParam("name")String name,@RequestParam("passward")String passward) {
+        boolean i=userService.register(name,passward);
+        String msg="注册成功";
+        if(!i){
+            msg="注册失败";
+        }
+        return msg;
+    }
 //    @RequestMapping("login")
 //    public String login(@RequestParam("tokenuuid")String tokenuuid){
 //        String name=tokenService.searchToken(tokenuuid);
