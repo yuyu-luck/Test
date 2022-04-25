@@ -24,10 +24,9 @@
     delete from t_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.User" >
-    insert into t_user (id, name, passward)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{passward,jdbcType=VARCHAR}
-      )
+  <insert id="register">
+    insert into t_user (name, passward)
+    values (#{name,jdbcType=VARCHAR}, #{passward,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.User" >
     insert into t_user

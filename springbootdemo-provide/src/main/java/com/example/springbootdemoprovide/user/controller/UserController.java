@@ -88,11 +88,11 @@ public class UserController {
         return list;
     }
 
-    @RequestMapping("login")
-    public String login(@RequestParam("tokenuuid")String tokenuuid){
-        String name=tokenService.searchToken(tokenuuid);
-        return name;
-    }
+//    @RequestMapping("login")
+//    public String login(@RequestParam("tokenuuid")String tokenuuid){
+//        String name=tokenService.searchToken(tokenuuid);
+//        return name;
+//    }
 
 
 }

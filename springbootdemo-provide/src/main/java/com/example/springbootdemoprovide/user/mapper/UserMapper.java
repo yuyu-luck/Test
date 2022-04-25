@@ -1,23 +1,25 @@
 package com.example.springbootdemoprovide.user.mapper;
 
 import com.example.springbootdemoprovide.user.model.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Mapper
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer id);
+    Integer deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    Integer register(@Param("name") String name, @Param("passward") String passward);
 
-    int insertSelective(User record);
+    Integer insertSelective(User record);
 
     User selectByPrimaryKey(User user);
 
     List<User> list();
 
-    int updateByPrimaryKeySelective(User record);
+    Integer updateByPrimaryKeySelective(User record);
 
-    int updateByPrimaryKey(User record);
+    Integer updateByPrimaryKey(User record);
 }
