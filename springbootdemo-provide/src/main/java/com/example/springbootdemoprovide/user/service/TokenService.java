@@ -9,5 +9,5 @@ public interface TokenService {
 
     int insert(Token record);
 
-    String searchToken(String tokenuuid);
+//    String searchToken(String tokenuuid);
 }
