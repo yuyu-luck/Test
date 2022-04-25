@@ -88,7 +88,7 @@ public class UserController {
         return list;
     }
 
-    @RequestMapping("list")
+    @RequestMapping("register")
     public String register(@RequestParam("name")String name,@RequestParam("passward")String passward) {
         boolean i=userService.register(name,passward);
         String msg="注册成功";
