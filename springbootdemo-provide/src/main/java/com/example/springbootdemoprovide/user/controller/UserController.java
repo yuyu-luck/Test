@@ -7,6 +7,9 @@ import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -84,6 +87,19 @@ public class UserController {
 
     @RequestMapping("list")
     public List<User> list() {
+//        redisTemplate.setKeySerializer(new StringRedisSerializer());
+//        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+//        ValueOperations valueOperations = redisTemplate.opsForValue();
+//        //1.先从redis中获取数据
+//        Object o = valueOperations.get("user::findById::" + id);
+//        //2.如果存在  则直接返回
+//        if(o!=null){
+//            return (List<User>) o;
+//        }
+        //3.如果不存在则查询数据库  并把查询的结果放入redis中
+//        if(user!=null){
+//            valueOperations.set("user::findById::"+id,user,30, TimeUnit.MINUTES); //缓存的过期时间
+//        }
         List<User> list=userService.list();
         return list;
     }
