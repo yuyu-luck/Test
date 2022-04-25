@@ -33,8 +33,5 @@ public class UserServiceImp implements UserService {
         return (Objects.isNull(count)?0:count)>0;
     }
 
-    public static void main(String[] args) {
-        UserServiceImp userServiceImp=new UserServiceImp();
-        userServiceImp.register("hh","1209");
-    }
+
 }
