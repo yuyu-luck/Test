@@ -5,6 +5,10 @@ import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
 import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -23,6 +27,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
+@Api(tags = "Springboot中参数传递的三个注解的使用")
 public class UserController {
 
 //    @Autowired
@@ -86,6 +91,7 @@ public class UserController {
 //    }
 
     @RequestMapping("list")
+    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
     public List<User> list() {
 //        redisTemplate.setKeySerializer(new StringRedisSerializer());
 //        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
@@ -105,6 +111,10 @@ public class UserController {
     }
 
     @RequestMapping("register")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name",value = "用户姓名",dataType = "String"),
+            @ApiImplicitParam(name = "passward",value = "用户密码",dataType = "String")
+    })
     public String register(@RequestParam("name")String name,@RequestParam("passward")String passward) {
         boolean i=userService.register(name,passward);
         String msg="注册成功";
