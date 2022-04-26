@@ -29,6 +29,16 @@
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -157,16 +167,54 @@
             </dependency>
             <!--            mybatis分页插件-->
             <!-- PageHelper 分页工具 -->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>1.3.0</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.github.pagehelper</groupId>-->
+<!--                <artifactId>pagehelper-spring-boot-starter</artifactId>-->
+<!--                <version>1.3.0</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
+            <!--swagger2markup插件-->
+            <plugin>
+                <groupId>io.github.swagger2markup</groupId>
+                <artifactId>swagger2markup-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <configuration>
+                    <!-- api-docs访问url -->
+                    <swaggerInput>http://localhost:8080/zx/swagger?group=zx</swaggerInput>
+                    <!-- 生成为单个文档，输出路径
+                    <outputFile>src/main/doc/api</outputFile>-->
+                    <!-- 生成为多个文档，输出路径 -->
+                    <outputDir>F:downloadswagger</outputDir>
+                    <config>
+                        <!-- wiki格式文档 -->
+                        <!--<swagger2markup.markupLanguage>CONFLUENCE_MARKUP</swagger2markup.markupLanguage> -->
+                        <!-- ascii格式文档 -->
+                        <swagger2markup.markupLanguage>ASCIIDOC</swagger2markup.markupLanguage>
+                        <!-- markdown格式文档 -->
+                        <!--<swagger2markup.markupLanguage>MARKDOWN</swagger2markup.markupLanguage>-->
+                        <swagger2markup.pathsGroupedBy>TAGS</swagger2markup.pathsGroupedBy>
+                    </config>
+                </configuration>
+            </plugin>
+            <!--asciidoctor插件-->
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.6</version>
+                <configuration>
+                    <sourceDirectory>F:downloadswagger</sourceDirectory>
+                    <outputDirectory>F:downloadswaggerhtml</outputDirectory>
+                    <backend>html</backend>
+                    <sourceHighlighter>coderay</sourceHighlighter>
+                    <attributes>
+                        <toc>left</toc>
+                    </attributes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
