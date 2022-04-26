@@ -111,6 +111,7 @@ public class UserController {
     }
 
     @RequestMapping("register")
+    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name",value = "用户姓名",dataType = "String"),
             @ApiImplicitParam(name = "passward",value = "用户密码",dataType = "String")

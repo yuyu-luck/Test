@@ -1,15 +1,20 @@
 package com.example.springbootdemoprovide.user.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.io.Serializable;
 
 @ToString
+@ApiModel(description = "用户实体类")
 public class User implements Serializable {
+    @ApiModelProperty("主键")
     private Integer id;
-
+    @ApiModelProperty("账号")
     private String name;
-
+    @ApiModelProperty("密码")
     private String passward;
 
     public User(Integer id, String name, String passward) {
