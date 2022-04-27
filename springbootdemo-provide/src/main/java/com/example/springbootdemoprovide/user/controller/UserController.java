@@ -5,6 +5,7 @@ import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
 import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -92,7 +93,7 @@ public class UserController {
 
     @RequestMapping("list")
     @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
-    public List<User> list() {
+    public PageInfo<User> list(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize) {
 //        redisTemplate.setKeySerializer(new StringRedisSerializer());
 //        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
 //        ValueOperations valueOperations = redisTemplate.opsForValue();
@@ -106,8 +107,8 @@ public class UserController {
 //        if(user!=null){
 //            valueOperations.set("user::findById::"+id,user,30, TimeUnit.MINUTES); //缓存的过期时间
 //        }
-        List<User> list=userService.list();
-        return list;
+        PageInfo<User> pageInfo =userService.list(pageNum,pageSize);
+        return pageInfo;
     }
 
     @RequestMapping("register")
