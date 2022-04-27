@@ -3,6 +3,8 @@ package com.example.springbootdemoprovide.user.service.imp;
 import com.example.springbootdemoprovide.user.mapper.UserMapper;
 import com.example.springbootdemoprovide.user.model.User;
 import com.example.springbootdemoprovide.user.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.lang.NonNull;
@@ -26,8 +28,11 @@ public class UserServiceImp implements UserService {
     @Override
     // 方法加上此注解，value是在Redis存储时key的值
     @Cacheable(value = "listCategoryForCustomer")
-    public List list() {
-        return userMapper.list();
+    public PageInfo list(int pageNum,int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<User> userList=userMapper.list();
+        PageInfo<User> pageInfo=new PageInfo<>(userList);
+        return pageInfo;
     }
 
     @Override
