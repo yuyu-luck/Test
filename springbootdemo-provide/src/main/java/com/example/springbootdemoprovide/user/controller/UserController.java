@@ -137,6 +137,7 @@ public class UserController {
 //    }
 
     @RequestMapping("task")
+    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
     public String login(ScheduledTaskRegistrar taskRegistrar){
         dynamicScheduleTask.configureTasks(taskRegistrar);
         return "";
