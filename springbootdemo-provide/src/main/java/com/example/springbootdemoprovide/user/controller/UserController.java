@@ -45,6 +45,8 @@ public class UserController {
     @Autowired
     private DynamicScheduleTask dynamicScheduleTask;
 
+    private ScheduledTaskRegistrar taskRegistrar;
+
     private User user;
 
     private Token token;
@@ -138,7 +140,7 @@ public class UserController {
 
     @RequestMapping("task")
     @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
-    public String login(ScheduledTaskRegistrar taskRegistrar){
+    public String login(){
         dynamicScheduleTask.configureTasks(taskRegistrar);
         return "";
     }
