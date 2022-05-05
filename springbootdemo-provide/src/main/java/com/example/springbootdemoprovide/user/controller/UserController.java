@@ -45,6 +45,7 @@ public class UserController {
     @Autowired
     private DynamicScheduleTask dynamicScheduleTask;
 
+    @Autowired
     private ScheduledTaskRegistrar taskRegistrar;
 
     private User user;
