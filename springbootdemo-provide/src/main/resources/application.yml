@@ -17,13 +17,16 @@ spring:
         password: 1234
         url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
         username: sun
-    redis:
-        host: 192.168.1.9
-        password: 123456
-        port: 6379
     mvc:
         pathmatch:
             matching-strategy: ant_path_matcher
 swagger:
-    enabled:
-        true
+    enabled: true
+#是否knife4j增强配置
+knife4j:
+    enable: true
+    #是否开启访问⽂档账号密码
+    basic:
+        enable: false
+        username: admin
+        password: admin
