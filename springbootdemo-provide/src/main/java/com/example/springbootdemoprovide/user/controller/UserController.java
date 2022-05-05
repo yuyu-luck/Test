@@ -3,7 +3,7 @@ package com.example.springbootdemoprovide.user.controller;
 import com.example.springbootdemoprovide.dictionary.CommonData;
 import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
-import com.example.springbootdemoprovide.user.scheduling.DynamicScheduleTask;
+//import com.example.springbootdemoprovide.user.scheduling.DynamicScheduleTask;
 import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -42,8 +42,8 @@ public class UserController {
     @Autowired
     private TokenService tokenService;
 
-    @Autowired
-    private DynamicScheduleTask dynamicScheduleTask;
+//    @Autowired
+//    private DynamicScheduleTask dynamicScheduleTask;
 
     @Autowired
     private ScheduledTaskRegistrar taskRegistrar;
@@ -139,10 +139,10 @@ public class UserController {
 //        return name;
 //    }
 
-    @RequestMapping("task")
-    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
-    public String login(){
-        dynamicScheduleTask.configureTasks(taskRegistrar);
-        return "";
-    }
+//    @RequestMapping("task")
+//    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
+//    public String login(){
+//        dynamicScheduleTask.configureTasks(taskRegistrar);
+//        return "";
+//    }
 }
