@@ -28,7 +28,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
-@Api(tags = "Springboot中参数传递的三个注解的使用")
+@Api(tags = "用户登录与注册")
 public class UserController {
 
 //    @Autowired
