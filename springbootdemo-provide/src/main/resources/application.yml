@@ -22,11 +22,4 @@ spring:
             matching-strategy: ant_path_matcher
 swagger:
     enabled: true
-#是否knife4j增强配置
-knife4j:
-    enable: true
-    #是否开启访问⽂档账号密码
-    basic:
-        enable: false
-        username: admin
-        password: admin
+
