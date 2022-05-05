@@ -3,6 +3,7 @@ package com.example.springbootdemoprovide.user.controller;
 import com.example.springbootdemoprovide.dictionary.CommonData;
 import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
+import com.example.springbootdemoprovide.user.scheduling.DynamicScheduleTask;
 import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,9 @@ public class UserController {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private DynamicScheduleTask dynamicScheduleTask;
 
     private User user;
 
@@ -131,5 +136,9 @@ public class UserController {
 //        return name;
 //    }
 
-
+    @RequestMapping("task")
+    public String login(ScheduledTaskRegistrar taskRegistrar){
+        dynamicScheduleTask.configureTasks(taskRegistrar);
+        return "";
+    }
 }

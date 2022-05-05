@@ -18,7 +18,7 @@ public class DynamicScheduleTask implements SchedulingConfigurer {
 
     @Mapper
     public interface CronMapper {
-        @Select("select info from t_token limit 2")
+        @Select("select info from t_token limit 1")
         public String getInfo();
     }
 
