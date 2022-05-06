@@ -20,7 +20,7 @@
     from t_token
     where tokenUUID = #{tokenuuid,jdbcType=VARCHAR}
   </select>
-  <select id="getInfo" >
+  <select id="getInfo" resultType="java.lang.String">
     select
     info
     from t_token
