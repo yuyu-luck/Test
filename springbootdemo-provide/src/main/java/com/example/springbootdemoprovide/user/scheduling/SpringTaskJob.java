@@ -3,6 +3,9 @@ package com.example.springbootdemoprovide.user.scheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * spring提供的SpringTask定时任务
+ */
 @Component
 public class SpringTaskJob {
 
