@@ -11,6 +11,15 @@ server:
     port: 7002
 spring:
     application:
+    task:
+        execution:
+            shutdown:
+                await-termination: false
+                await-termination-period: 10s
+        scheduling:
+            pool:
+                size: 10
+            thread-name-prefix: hanhan
         name: springbootdemo-provide
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
@@ -22,17 +31,4 @@ spring:
             matching-strategy: ant_path_matcher
 swagger:
     enabled: true
-
-    # 配置springtask 定时任务相关的配置
-    task:
-        scheduling:
-            pool:
-                size: 10
-            thread-name-prefix: hanhan
-        execution:
-            shutdown:
-                # 线程关闭时是否等所有任务结束
-                await-termination: false
-              # 线程最大的等待时间，防止线程陷入循环关不掉
-                await-termination-period: 10s
 
