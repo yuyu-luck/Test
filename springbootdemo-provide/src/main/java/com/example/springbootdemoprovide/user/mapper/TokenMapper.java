@@ -11,6 +11,8 @@ public interface TokenMapper {
 
     String searchToken(String tokenuuid);
 
+    String getInfo();
+
     int updateByPrimaryKeySelective(Token record);
 
     int updateByPrimaryKey(Token record);

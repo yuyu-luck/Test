@@ -3,7 +3,7 @@ package com.example.springbootdemoprovide.user.controller;
 import com.example.springbootdemoprovide.dictionary.CommonData;
 import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
-//import com.example.springbootdemoprovide.user.scheduling.DynamicScheduleTask;
+import com.example.springbootdemoprovide.user.scheduling.DynamicScheduleTask;
 import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.ValueOperations;
 //import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 //import org.springframework.data.redis.serializer.StringRedisSerializer;
-//import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,11 +42,11 @@ public class UserController {
     @Autowired
     private TokenService tokenService;
 
-//    @Autowired
-//    private DynamicScheduleTask dynamicScheduleTask;
+    @Autowired
+    private DynamicScheduleTask dynamicScheduleTask;
 
-//    @Autowired
-//    private ScheduledTaskRegistrar taskRegistrar;
+
+    private ScheduledTaskRegistrar taskRegistrar;
 
     private User user;
 
@@ -139,10 +139,10 @@ public class UserController {
 //        return name;
 //    }
 
-//    @RequestMapping("task")
-//    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
-//    public String login(){
-//        dynamicScheduleTask.configureTasks(taskRegistrar);
-//        return "";
-//    }
+    @RequestMapping("task")
+    @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
+    public String login(){
+        dynamicScheduleTask.configureTasks(taskRegistrar);
+        return "";
+    }
 }
