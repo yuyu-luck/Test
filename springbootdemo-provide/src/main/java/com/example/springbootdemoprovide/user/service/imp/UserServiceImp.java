@@ -26,7 +26,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    // 方法加上此注解，value是在Redis存储时key的值
+    // 将数据缓存到redis中在方法加上此注解，value是在Redis存储时key的值
     @Cacheable(value = "listCategoryForCustomer")
     public PageInfo list(int pageNum,int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
