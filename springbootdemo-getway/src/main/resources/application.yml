@@ -4,8 +4,6 @@ spring:
     application:
         name: springbootdemo-getway
     cloud:
-      nacos:
-        server-addr: nacos:8848
       gateway:
             discovery:
                 locator:
@@ -47,4 +45,4 @@ eureka:
   #    prefer-ip-address: true
   client:
     service-url:  # eureka的地址信息
-      defaultZone: http://127.0.0.1
+      defaultZone: http://localhost:7001/eureka
