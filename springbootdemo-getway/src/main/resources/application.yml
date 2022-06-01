@@ -11,14 +11,14 @@ spring:
             routes:
 
                 - id: consume8081
-                  uri: lb:http://eureka7001.com:5060/eureka/
+                  uri: lb://cloudconsumservice
                   predicates:
                       - Path=/consume/**
                   filters:
                       - StripPrefix=1
 
                 - id: provide8083
-                  uri: lb://cloudprovideservice
+                  uri: lb::http://localhost:7002/user/hello
                   predicates:
                       - Path=/provide/**
                   filters:
