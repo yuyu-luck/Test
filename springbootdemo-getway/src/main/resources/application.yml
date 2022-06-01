@@ -34,6 +34,13 @@ spring:
                   uri: https://cn.bing.com
                   predicates:
                       - Path=/test/**
+
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 1234
+      url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
+      username: sun
+
 eureka:
   #  将ip配置到eureka里面，不给就是host名会配置到那个里面
   #  instance:
@@ -41,8 +48,3 @@ eureka:
   client:
     service-url:  # eureka的地址信息
       defaultZone: http://127.0.0.1
-    datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        password: 1234
-        url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
-        username: sun
