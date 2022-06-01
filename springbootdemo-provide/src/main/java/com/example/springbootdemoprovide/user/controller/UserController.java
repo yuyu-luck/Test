@@ -130,5 +130,7 @@ public class UserController {
 //        String name=tokenService.searchToken(tokenuuid);
 //        return name;
 //    }
-
+  public String hello() {
+    return "欢迎来到网关页面";
+}
 }
