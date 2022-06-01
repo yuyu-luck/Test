@@ -4,7 +4,9 @@ spring:
     application:
         name: springbootdemo-getway
     cloud:
-        gateway:
+      nacos:
+        server-addr: nacos:8848
+      gateway:
             discovery:
                 locator:
                     enabled: true
@@ -32,13 +34,7 @@ spring:
                   uri: https://cn.bing.com
                   predicates:
                       - Path=/test/**
-    eureka:
-        #  将ip配置到eureka里面，不给就是host名会配置到那个里面
-        #  instance:
-        #    prefer-ip-address: true
-        client:
-            service-url:  # eureka的地址信息
-                defaultZone: http://eureka7001.com:5060/eureka/
+
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: 1234
