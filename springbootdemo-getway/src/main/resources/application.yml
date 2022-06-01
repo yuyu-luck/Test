@@ -11,7 +11,7 @@ spring:
             routes:
 
                 - id: consume8081
-                  uri: lb://cloudconsumservice
+                  uri: lb:http://eureka7001.com:5060/eureka/
                   predicates:
                       - Path=/consume/**
                   filters:
