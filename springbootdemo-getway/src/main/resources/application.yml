@@ -1,0 +1,46 @@
+server:
+    port: 7005
+spring:
+    application:
+        name: springbootdemo-getway
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+            routes:
+
+                - id: consume8081
+                  uri: lb://cloudconsumservice
+                  predicates:
+                      - Path=/consume/**
+                  filters:
+                      - StripPrefix=1
+
+                - id: provide8083
+                  uri: lb://cloudprovideservice
+                  predicates:
+                      - Path=/provide/**
+                  filters:
+                      #            - 转发做拼接，去掉provide后缀，uri/** 而不是 uri/provide/**
+                      - StripPrefix=1
+                #            与之对于的还有 PrefixPath=/Huterox
+                #  当访问 http://localhost:8762/aaa，加上前缀就变成 http://localhost:8762/Huterox/aaa
+
+
+                - id: test
+                  uri: https://cn.bing.com
+                  predicates:
+                      - Path=/test/**
+    eureka:
+        #  将ip配置到eureka里面，不给就是host名会配置到那个里面
+        #  instance:
+        #    prefer-ip-address: true
+        client:
+            service-url:  # eureka的地址信息
+                defaultZone: http://127.0.0.1:10086/eureka
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: 1234
+        url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
+        username: sun
