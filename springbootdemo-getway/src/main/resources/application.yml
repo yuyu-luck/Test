@@ -38,7 +38,7 @@ spring:
         #    prefer-ip-address: true
         client:
             service-url:  # eureka的地址信息
-                defaultZone: http://127.0.0.1:10086/eureka
+                defaultZone: http://eureka7001.com:5060/eureka/
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: 1234
