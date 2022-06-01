@@ -10,12 +10,12 @@ spring:
                     enabled: true
             routes:
 
-                - id: consume8081
-                  uri: lb://cloudconsumservice
-                  predicates:
-                      - Path=/consume/**
-                  filters:
-                      - StripPrefix=1
+#                - id: consume8081
+#                  uri: lb://cloudconsumservice
+#                  predicates:
+#                      - Path=/consume/**
+#                  filters:
+#                      - StripPrefix=1
 
                 - id: provide8083
                   uri: http://localhost:7002/user/hello
@@ -28,10 +28,10 @@ spring:
                 #  当访问 http://localhost:8762/aaa，加上前缀就变成 http://localhost:8762/Huterox/aaa
 
 
-                - id: test
-                  uri: https://cn.bing.com
-                  predicates:
-                      - Path=/test/**
+#                - id: test
+#                  uri: https://cn.bing.com
+#                  predicates:
+#                      - Path=/test/**
 
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
