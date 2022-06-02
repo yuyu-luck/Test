@@ -1,0 +1,45 @@
+eureka:
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:7001/eureka
+server:
+    port: 7004
+spring:
+    application:
+        name: springbootdemo-consumer
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: 1234
+        url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
+        username: sun
+ribbon:
+    # 请求连接超时时间
+    ConnectTimeout: 2000
+    # 请求处理超时时间
+    ReadTimeout: 5000
+    # 对所有的操作都进行重试
+    OkToRetryOnAllOperations: true
+    ####根据如上配置，当访问到故障请求的时候，它会再尝试访问一次当前实例(次数 由MaxAutoRetries配置)，
+    ####如果不行，就换一个实例进行访问，如果还不行，再换一次实例访问(更换次数 由MaxAutoRetriesNextServer配置)，
+    ####如果依然不行，返回失败信息。
+    MaxAutoRetries: 0 #对当前选中实例重试次数，不包括第一次调用
+    MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #负载策略调整
+logging:
+    level:
+        # Feign日志只会对日志级别为debug的做出响应
+        com.wuzx.service.ProducerFeignClient: debug
+feign:
+    hystrix:
+        enabled: true
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        ##########################################Hystrix的超时时⻓设置
+                        timeoutInMilliseconds: 15000
