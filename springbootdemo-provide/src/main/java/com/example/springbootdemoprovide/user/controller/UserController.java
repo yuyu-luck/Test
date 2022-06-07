@@ -81,7 +81,6 @@ public class UserController {
 ////    }
 
 
-
 //    @RequestMapping("list")
 //    public List<User> list() {
 //        List<User> list=userService.list();
@@ -93,7 +92,7 @@ public class UserController {
 
     @RequestMapping("list")
     @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
-    public PageInfo<User> list(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize) {
+    public PageInfo<User> list(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
 //        redisTemplate.setKeySerializer(new StringRedisSerializer());
 //        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
 //        ValueOperations valueOperations = redisTemplate.opsForValue();
@@ -107,21 +106,21 @@ public class UserController {
 //        if(user!=null){
 //            valueOperations.set("user::findById::"+id,user,30, TimeUnit.MINUTES); //缓存的过期时间
 //        }
-        PageInfo<User> pageInfo =userService.list(pageNum,pageSize);
+        PageInfo<User> pageInfo = userService.list(pageNum, pageSize);
         return pageInfo;
     }
 
     @RequestMapping("register")
     @ApiOperation(value = "测试@PathVariable注解的第一种使用情况", notes = "<span style='color:red;'>描述:</span>&nbsp;用来测试@PathVariable注解的第一种使用情况")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "name",value = "用户姓名",dataType = "String"),
-            @ApiImplicitParam(name = "passward",value = "用户密码",dataType = "String")
+            @ApiImplicitParam(name = "name", value = "用户姓名", dataType = "String"),
+            @ApiImplicitParam(name = "passward", value = "用户密码", dataType = "String")
     })
-    public String register(@RequestParam("name")String name,@RequestParam("passward")String passward) {
-        boolean i=userService.register(name,passward);
-        String msg="注册成功";
-        if(!i){
-            msg="注册失败";
+    public String register(@RequestParam("name") String name, @RequestParam("passward") String passward) {
+        boolean i = userService.register(name, passward);
+        String msg = "注册成功";
+        if (!i) {
+            msg = "注册失败";
         }
         return msg;
     }
@@ -130,7 +129,9 @@ public class UserController {
 //        String name=tokenService.searchToken(tokenuuid);
 //        return name;
 //    }
-  public String hello() {
-    return "欢迎来到网关页面";
-}
+
+    @RequestMapping("hello")
+    public String hello() {
+        return "欢迎来到网关页面";
+    }
 }
