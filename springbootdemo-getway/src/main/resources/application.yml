@@ -17,7 +17,7 @@ spring:
 #                  filters:
 #                      - StripPrefix=1
 
-                - id: provide8083
+                - id: provide
                   uri: http://localhost:7002/user/hello
                   predicates:
                       - Path=/provide/**
