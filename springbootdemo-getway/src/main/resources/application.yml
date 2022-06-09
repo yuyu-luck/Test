@@ -13,6 +13,13 @@ spring:
                 uri: http://localhost:7002/user/hello
                 predicates:
                       - Path=/provide/**
+
+     datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 1234
+      url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
+      username: sun
+
 eureka:
   instance:
     hostname: springbootdemo-getway-service
@@ -21,11 +28,3 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:7001/eureka
-
-    datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      password: 1234
-      url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
-      username: sun
-
-
