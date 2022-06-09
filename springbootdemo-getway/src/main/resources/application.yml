@@ -3,9 +3,6 @@ server:
 spring:
     cloud:
       gateway:
-            discovery:
-                locator:
-                    enabled: true
             routes:
               - id: provide
                 uri: lb://provide
