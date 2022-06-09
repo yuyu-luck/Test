@@ -1,8 +1,6 @@
 server:
     port: 7005
 spring:
-    application:
-        name: springbootdemo-getway
     cloud:
       gateway:
             discovery:
@@ -14,7 +12,7 @@ spring:
                 predicates:
                       - Path=/provide/**
 
-     datasource:
+    datasource:
       driver-class-name: com.mysql.jdbc.Driver
       password: 1234
       url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
