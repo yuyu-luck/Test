@@ -8,7 +8,7 @@ spring:
                     enabled: true
             routes:
               - id: provide
-                uri: http://localhost:7002/user/hello
+                uri: http://192.168.1.4:7002/user/hello
                 predicates:
                       - Path=/provide/**
 
