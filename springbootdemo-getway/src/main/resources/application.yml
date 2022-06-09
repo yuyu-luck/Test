@@ -9,29 +9,18 @@ spring:
                 locator:
                     enabled: true
             routes:
-
-#                - id: consume8081
-#                  uri: lb://cloudconsumservice
-#                  predicates:
-#                      - Path=/consume/**
-#                  filters:
-#                      - StripPrefix=1
-
-                - id: provide
-                  uri: http://localhost:7002/user/hello
-                  predicates:
+              - id: provide
+                uri: http://localhost:7002/user/hello
+                predicates:
                       - Path=/provide/**
-                  filters:
-                      #            - 转发做拼接，去掉provide后缀，uri/** 而不是 uri/provide/**
-                      - StripPrefix=1
-                #            与之对于的还有 PrefixPath=/Huterox
-                #  当访问 http://localhost:8762/aaa，加上前缀就变成 http://localhost:8762/Huterox/aaa
-
-
-#                - id: test
-#                  uri: https://cn.bing.com
-#                  predicates:
-#                      - Path=/test/**
+eureka:
+  instance:
+    hostname: springbootdemo-getway-service
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
 
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
@@ -39,9 +28,4 @@ spring:
       url: jdbc:mysql://localhost:3306/dda?serverTimezone=UTC
       username: sun
 
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:7001/eureka
+
