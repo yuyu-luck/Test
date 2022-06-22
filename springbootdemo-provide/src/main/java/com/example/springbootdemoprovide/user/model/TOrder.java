@@ -4,44 +4,45 @@ import java.io.Serializable;
 
 /**
  * 订单表
+ *
  * @TableName t_order
  */
 public class TOrder implements Serializable {
     /**
-     * 
+     *
      */
     private Integer rid;
 
     /**
-     * 
+     *
      */
     private String rname;
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 
+     *
      */
     public Integer getRid() {
         return rid;
     }
 
     /**
-     * 
+     *
      */
     public void setRid(Integer rid) {
         this.rid = rid;
     }
 
     /**
-     * 
+     *
      */
     public String getRname() {
         return rname;
     }
 
     /**
-     * 
+     *
      */
     public void setRname(String rname) {
         this.rname = rname;
@@ -60,7 +61,7 @@ public class TOrder implements Serializable {
         }
         TOrder other = (TOrder) that;
         return (this.getRid() == null ? other.getRid() == null : this.getRid().equals(other.getRid()))
-            && (this.getRname() == null ? other.getRname() == null : this.getRname().equals(other.getRname()));
+                && (this.getRname() == null ? other.getRname() == null : this.getRname().equals(other.getRname()));
     }
 
     @Override
