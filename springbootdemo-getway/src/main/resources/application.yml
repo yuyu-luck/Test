@@ -1,19 +1,19 @@
 server:
-    port: 7005
+  port: 7005
 spring:
-    cloud:
-      gateway:
-            routes:
-              - id: provide
-                uri: lb://provide
-                predicates:
-                      - Path=/oss/**
+  cloud:
+    gateway:
+      routes:
+        - id: provide
+          uri: lb://provide
+          predicates:
+            - Path=/oss/**
 
-    datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      password: 1234
-      url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-      username: sun
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: 1234
+    url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: sun
 
 eureka:
   instance:
