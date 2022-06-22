@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author sha.li
  * @date 2020-12-16
-        */
+ */
 @Configuration
 public class RestTemplateConfig {
 

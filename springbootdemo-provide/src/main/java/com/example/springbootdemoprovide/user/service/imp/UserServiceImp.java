@@ -28,17 +28,17 @@ public class UserServiceImp implements UserService {
     @Override
     // 将数据缓存到redis中在方法加上此注解，value是在Redis存储时key的值
     @Cacheable(value = "listCategoryForCustomer")
-    public PageInfo list(int pageNum,int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        List<User> userList=userMapper.list();
-        PageInfo<User> pageInfo=new PageInfo<>(userList);
+    public PageInfo list(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> userList = userMapper.list();
+        PageInfo<User> pageInfo = new PageInfo<>(userList);
         return pageInfo;
     }
 
     @Override
     public boolean register(@NonNull String name, @NonNull String passward) {
-     Integer count= userMapper.register(name,passward);
-        return (Objects.isNull(count)?0:count)>0;
+        Integer count = userMapper.register(name, passward);
+        return (Objects.isNull(count) ? 0 : count) > 0;
     }
 
 
