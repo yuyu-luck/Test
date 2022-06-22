@@ -19,8 +19,13 @@ public class UserController {
 //    }
 
     @RequestMapping("login")
-    public String login(@RequestParam("tokenuuid")String tokenuuid) {
+    public String login(@RequestParam("tokenuuid") String tokenuuid) {
         String name = userFegin.login(tokenuuid);
+        return name;
+    }
+    @RequestMapping("hello")
+    public String hello() {
+        String name = userFegin.hello();
         return name;
     }
 
