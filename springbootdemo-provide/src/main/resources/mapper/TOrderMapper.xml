@@ -5,8 +5,8 @@
 <mapper namespace="com.example.springbootdemoprovide.user.mapper.TOrderMapper">
 
     <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.TOrder">
-            <id property="rid" column="rid" jdbcType="INTEGER"/>
-            <result property="rname" column="rname" jdbcType="VARCHAR"/>
+        <id property="rid" column="rid" jdbcType="INTEGER"/>
+        <result property="rname" column="rname" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

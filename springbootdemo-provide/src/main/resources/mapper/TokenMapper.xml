@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.springbootdemoprovide.user.mapper.TokenMapper" >
-  <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.Token" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="info" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="tokenUUID" jdbcType="VARCHAR" javaType="java.lang.String" />
-    </constructor>
-  </resultMap>
-  <resultMap id="str" type="com.example.springbootdemoprovide.user.model.Token" >
-      <result column="info" property="info" jdbcType="VARCHAR" javaType="java.lang.String" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.example.springbootdemoprovide.user.mapper.TokenMapper">
+    <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.Token">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="info" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="tokenUUID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="str" type="com.example.springbootdemoprovide.user.model.Token">
+        <result column="info" property="info" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, info, tokenUUID
   </sql>
-  <select id="searchToken" resultMap="str"  parameterType="java.lang.String" >
+    <select id="searchToken" resultMap="str" parameterType="java.lang.String">
     select
     info
     from t_token
     where tokenUUID = #{tokenuuid,jdbcType=VARCHAR}
   </select>
-  <select id="getInfo" resultType="java.lang.String">
+    <select id="getInfo" resultType="java.lang.String">
     select
     info
     from t_token
     limit 1
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_token
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.Token" >
+    <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.Token">
     insert into t_token (id, info, tokenUUID
       )
     values (#{id,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{tokenuuid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.Token" >
-    insert into t_token
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="info != null" >
-        info,
-      </if>
-      <if test="tokenuuid != null" >
-        tokenUUID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="info != null" >
-        #{info,jdbcType=VARCHAR},
-      </if>
-      <if test="tokenuuid != null" >
-        #{tokenuuid,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemoprovide.user.model.Token" >
-    update t_token
-    <set >
-      <if test="info != null" >
-        info = #{info,jdbcType=VARCHAR},
-      </if>
-      <if test="tokenuuid != null" >
-        tokenUUID = #{tokenuuid,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemoprovide.user.model.Token" >
+    <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.Token">
+        insert into t_token
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="info != null">
+                info,
+            </if>
+            <if test="tokenuuid != null">
+                tokenUUID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="info != null">
+                #{info,jdbcType=VARCHAR},
+            </if>
+            <if test="tokenuuid != null">
+                #{tokenuuid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemoprovide.user.model.Token">
+        update t_token
+        <set>
+            <if test="info != null">
+                info = #{info,jdbcType=VARCHAR},
+            </if>
+            <if test="tokenuuid != null">
+                tokenUUID = #{tokenuuid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.springbootdemoprovide.user.model.Token">
     update t_token
     set info = #{info,jdbcType=VARCHAR},
       tokenUUID = #{tokenuuid,jdbcType=VARCHAR}

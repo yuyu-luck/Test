@@ -1,103 +1,103 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.springbootdemoprovide.user.mapper.UserIndexMapper" >
-  <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.UserIndex" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="first_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="last_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="id_card" jdbcType="VARCHAR" javaType="java.lang.String" />
-    </constructor>
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.example.springbootdemoprovide.user.model.UserIndex" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="first_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="last_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="id_card" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="information" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.example.springbootdemoprovide.user.mapper.UserIndexMapper">
+    <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.UserIndex">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="first_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="last_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="id_card" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.example.springbootdemoprovide.user.model.UserIndex">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="first_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="last_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="id_card" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="information" jdbcType="LONGVARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, first_name, last_name, id_card
   </sql>
-  <sql id="Blob_Column_List" >
+    <sql id="Blob_Column_List">
     information
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from user_index
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from user_index
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_index
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.UserIndex" >
+    <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.UserIndex">
     insert into user_index (id, first_name, last_name, 
       id_card, information)
     values (#{id,jdbcType=INTEGER}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
       #{idCard,jdbcType=VARCHAR}, #{information,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.UserIndex" >
-    insert into user_index
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="firstName != null" >
-        first_name,
-      </if>
-      <if test="lastName != null" >
-        last_name,
-      </if>
-      <if test="idCard != null" >
-        id_card,
-      </if>
-      <if test="information != null" >
-        information,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="firstName != null" >
-        #{firstName,jdbcType=VARCHAR},
-      </if>
-      <if test="lastName != null" >
-        #{lastName,jdbcType=VARCHAR},
-      </if>
-      <if test="idCard != null" >
-        #{idCard,jdbcType=VARCHAR},
-      </if>
-      <if test="information != null" >
-        #{information,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemoprovide.user.model.UserIndex" >
-    update user_index
-    <set >
-      <if test="firstName != null" >
-        first_name = #{firstName,jdbcType=VARCHAR},
-      </if>
-      <if test="lastName != null" >
-        last_name = #{lastName,jdbcType=VARCHAR},
-      </if>
-      <if test="idCard != null" >
-        id_card = #{idCard,jdbcType=VARCHAR},
-      </if>
-      <if test="information != null" >
-        information = #{information,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.springbootdemoprovide.user.model.UserIndex" >
+    <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.UserIndex">
+        insert into user_index
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="firstName != null">
+                first_name,
+            </if>
+            <if test="lastName != null">
+                last_name,
+            </if>
+            <if test="idCard != null">
+                id_card,
+            </if>
+            <if test="information != null">
+                information,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="firstName != null">
+                #{firstName,jdbcType=VARCHAR},
+            </if>
+            <if test="lastName != null">
+                #{lastName,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="information != null">
+                #{information,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemoprovide.user.model.UserIndex">
+        update user_index
+        <set>
+            <if test="firstName != null">
+                first_name = #{firstName,jdbcType=VARCHAR},
+            </if>
+            <if test="lastName != null">
+                last_name = #{lastName,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                id_card = #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="information != null">
+                information = #{information,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.springbootdemoprovide.user.model.UserIndex">
     update user_index
     set first_name = #{firstName,jdbcType=VARCHAR},
       last_name = #{lastName,jdbcType=VARCHAR},
@@ -105,7 +105,7 @@
       information = #{information,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemoprovide.user.model.UserIndex" >
+    <update id="updateByPrimaryKey" parameterType="com.example.springbootdemoprovide.user.model.UserIndex">
     update user_index
     set first_name = #{firstName,jdbcType=VARCHAR},
       last_name = #{lastName,jdbcType=VARCHAR},
