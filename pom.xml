@@ -23,7 +23,6 @@
     <modules>
         <module>springbootdemo-provide</module>
         <module>springbootdemo-consumer</module>
-        <module>springbootdemo-entity</module>
         <module>springbootdemo-eureka</module>
         <module>springbootdemo-getway</module>
     </modules>
