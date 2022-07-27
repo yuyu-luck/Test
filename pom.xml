@@ -24,7 +24,7 @@
         <module>springbootdemo-provide</module>
         <module>springbootdemo-consumer</module>
         <module>springbootdemo-eureka</module>
-        <module>springbootdemo-getway</module>
+        <module>springbootdemo-gateway</module>
     </modules>
 
     <dependencies>
