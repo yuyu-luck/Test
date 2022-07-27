@@ -10,7 +10,7 @@ spring:
             lower-case-service-id: true
       routes:
         - id: provide
-          uri: http://localhost:7002
+          uri: http://192.168.184.1:7002
           predicates:
             - Path=/user/**
 #          filters:
