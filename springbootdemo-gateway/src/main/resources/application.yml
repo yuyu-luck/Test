@@ -11,7 +11,7 @@ spring:
           lower-case-service-id: true
       routes:
         - id: provide
-          uri: lb://provide
+          uri: http://localhost:7002
           predicates:
             - Path=/oss/**
           filters:
