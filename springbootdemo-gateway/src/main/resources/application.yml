@@ -8,7 +8,6 @@ spring:
           uri: lb://provide
           predicates:
             - Path=/oss/**
-
   datasource:
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: sun
