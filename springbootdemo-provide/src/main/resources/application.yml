@@ -23,10 +23,10 @@ spring:
       thread-name-prefix: hanhan
     name: springbootdemo-provide
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    password: 1234
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: sun
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
