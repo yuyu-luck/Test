@@ -1,5 +1,7 @@
 server:
   port: 7005
+  application:
+    name: service-gateway
 spring:
   cloud:
     gateway:
@@ -8,6 +10,8 @@ spring:
           uri: lb://provide
           predicates:
             - Path=/oss/**
+          filters:
+            - StripPrefix=1
   datasource:
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: sun
