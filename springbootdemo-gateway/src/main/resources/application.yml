@@ -1,14 +1,13 @@
 server:
   port: 7005
-  application:
-    name: service-gateway
+
 spring:
   cloud:
     gateway:
       discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
+          locator:
+            enabled: true
+             lower-case-service-id: true
       routes:
         - id: provide
           uri: http://localhost:7002
@@ -21,7 +20,8 @@ spring:
     username: sun
     password: 1234
     type: com.alibaba.druid.pool.DruidDataSource
-
+  application:
+    name: gateway
 eureka:
   client:
     fetch-registry: true
