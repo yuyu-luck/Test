@@ -23,6 +23,7 @@ public class UserController {
         String name = userFegin.login(tokenuuid);
         return name;
     }
+
     @RequestMapping("hello")
     public String hello() {
         String name = userFegin.hello();
