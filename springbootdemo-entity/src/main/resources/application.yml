@@ -1,3 +1,3 @@
 spring:
-    application:
-        name: springbootdemo-entity
+  application:
+    name: springbootdemo-entity

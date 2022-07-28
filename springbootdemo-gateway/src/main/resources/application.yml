@@ -6,15 +6,15 @@ spring:
     gateway:
       discovery:
         locator:
-            enabled: true
-            lower-case-service-id: true
+          enabled: true
+          lower-case-service-id: true
       routes:
-      - id: serviceprovide
-        uri: http://192.168.29.1:7002
-        predicates:
-        - Path=/serviceprovide/**
-        filters:
-        - StripPrefix=1
+        - id: serviceprovide
+          uri: http://192.168.29.1:7002
+          predicates:
+            - Path=/serviceprovide/**
+          filters:
+            - StripPrefix=1
   datasource:
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: sun
@@ -25,9 +25,9 @@ spring:
 eureka:
   client:
     service-url:
-     fetch-registry: true
-     register-with-eureka: true
-     defaultZone: http://localhost:7001/eureka
+      fetch-registry: true
+      register-with-eureka: true
+      defaultZone: http://localhost:7001/eureka
   instance:
     hostname: gateway
 management:
