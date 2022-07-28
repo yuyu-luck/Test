@@ -5,7 +5,7 @@ eureka:
         service-url:
             defaultZone: http://localhost:7001/eureka
 server:
-    port: 7005
+    port: 7009
 spring:
     application:
         name: springbootdemo-consumer

@@ -10,17 +10,11 @@ spring:
             lower-case-service-id: true
       routes:
       - id: serviceprovide
-        uri: lb://provide
+        uri: http://192.168.29.1:7002
         predicates:
         - Path=/serviceprovide/**
         filters:
         - StripPrefix=1
-        - id: baidu
-            uri: http://www.baidu.com
-            predicates:
-              - Path=/baidu
-            filters:
-              - StripPrefix=1
   datasource:
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: sun
