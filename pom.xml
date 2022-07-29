@@ -31,6 +31,7 @@
         <module>springbootdemo-entity</module>
         <module>springbootdemo-eureka</module>
         <module>springbootdemo-gateway</module>
+        <module>common</module>
     </modules>
 
     <dependencies>
