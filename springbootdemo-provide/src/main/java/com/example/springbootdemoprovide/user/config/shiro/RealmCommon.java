@@ -1,4 +1,4 @@
-package com.example.springbootdemoprovide.user.config;//package com.example.commom.shiro;
+package com.example.springbootdemoprovide.user.config.shiro;//package com.example.commom.shiro;
 //
 //import org.apache.shiro.authc.AuthenticationException;
 //import org.apache.shiro.authc.AuthenticationInfo;
