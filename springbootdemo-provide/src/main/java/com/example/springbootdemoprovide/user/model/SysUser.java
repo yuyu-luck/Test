@@ -3,6 +3,7 @@ package com.example.springbootdemoprovide.user.model;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.Set;
 
 @ToString
 public class SysUser {
@@ -31,6 +32,8 @@ public class SysUser {
     private Date createTime;
 
     private Date updateTime;
+
+    private Set<SysRole> sysRoleList;
 
     public SysUser(Long id, String username, String password) {
         this.id = id;
@@ -160,5 +163,13 @@ public class SysUser {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Set<SysRole> getSysRoleList() {
+        return sysRoleList;
+    }
+
+    public void setSysRoleList(Set<SysRole> sysRoleList) {
+        this.sysRoleList = sysRoleList;
     }
 }

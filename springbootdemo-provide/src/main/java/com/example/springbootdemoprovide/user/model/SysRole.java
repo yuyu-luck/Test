@@ -3,6 +3,7 @@ package com.example.springbootdemoprovide.user.model;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.Set;
 
 @ToString
 public class SysRole {
@@ -15,6 +16,8 @@ public class SysRole {
     private Date createTime;
 
     private Date updateTime;
+
+    private Set<SyserPermission> sysPermsissionList;
 
     public SysRole(Long id, String name) {
         this.id = id;
@@ -71,5 +74,13 @@ public class SysRole {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Set<SyserPermission> getSysPermsissionList() {
+        return sysPermsissionList;
+    }
+
+    public void setSysPermsissionList(Set<SyserPermission> sysPermsissionList) {
+        this.sysPermsissionList = sysPermsissionList;
     }
 }
