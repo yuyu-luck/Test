@@ -8,8 +8,13 @@ public interface SysUserMapper {
     int insert(SysUser record);
 
     int insertSelective(SysUser record);
+    /**
+     * 根据用户民查询信息
+     * @param name 用户名
+     * @return
+     */
+    SysUser findByName(String name) throws Exception;
 
-    SysUser selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(SysUser record);
 

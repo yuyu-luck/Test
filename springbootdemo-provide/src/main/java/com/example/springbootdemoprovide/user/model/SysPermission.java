@@ -1,9 +1,6 @@
 package com.example.springbootdemoprovide.user.model;
 
-import lombok.ToString;
-
-@ToString
-public class SyserPermission {
+public class SysPermission {
     private Long id;
 
     private Integer parentId;
@@ -20,13 +17,7 @@ public class SyserPermission {
 
     private Integer sort;
 
-    public SyserPermission(Long id, Integer parentId, String name) {
-        this.id = id;
-        this.parentId = parentId;
-        this.name = name;
-    }
-
-    public SyserPermission(Long id, Integer parentId, String name, String css, String href, Integer type, String permission, Integer sort) {
+    public SysPermission(Long id, Integer parentId, String name, String css, String href, Integer type, String permission, Integer sort) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
@@ -37,7 +28,7 @@ public class SyserPermission {
         this.sort = sort;
     }
 
-    public SyserPermission() {
+    public SysPermission() {
         super();
     }
 

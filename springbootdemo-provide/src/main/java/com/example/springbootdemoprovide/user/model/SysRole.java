@@ -17,7 +17,7 @@ public class SysRole {
 
     private Date updateTime;
 
-    private Set<SyserPermission> sysPermsissionList;
+    private Set<SysPermission> sysPermsissions;
 
     public SysRole(Long id, String name) {
         this.id = id;
@@ -76,11 +76,11 @@ public class SysRole {
         this.updateTime = updateTime;
     }
 
-    public Set<SyserPermission> getSysPermsissionList() {
-        return sysPermsissionList;
+    public Set<SysPermission> getSysPermsissions() {
+        return sysPermsissions;
     }
 
-    public void setSysPermsissionList(Set<SyserPermission> sysPermsissionList) {
-        this.sysPermsissionList = sysPermsissionList;
+    public void setSysPermsissions(Set<SysPermission> sysPermsissions) {
+        this.sysPermsissions = sysPermsissions;
     }
 }

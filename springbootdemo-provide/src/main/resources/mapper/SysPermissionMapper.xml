@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.springbootdemoprovide.user.mapper.SyserPermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.SyserPermission" >
+<mapper namespace="com.example.springbootdemoprovide.user.mapper.SysPermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.example.springbootdemoprovide.user.model.SysPermission" >
     <constructor >
       <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="parent_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -26,7 +26,7 @@
     delete from sys_permission
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.SyserPermission" >
+  <insert id="insert" parameterType="com.example.springbootdemoprovide.user.model.SysPermission" >
     insert into sys_permission (id, parent_id, name, 
       css, href, type, permission, 
       sort)
@@ -34,7 +34,7 @@
       #{css,jdbcType=VARCHAR}, #{href,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, 
       #{sort,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.SyserPermission" >
+  <insert id="insertSelective" parameterType="com.example.springbootdemoprovide.user.model.SysPermission" >
     insert into sys_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -89,7 +89,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemoprovide.user.model.SyserPermission" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemoprovide.user.model.SysPermission" >
     update sys_permission
     <set >
       <if test="parentId != null" >
@@ -116,7 +116,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemoprovide.user.model.SyserPermission" >
+  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemoprovide.user.model.SysPermission" >
     update sys_permission
     set parent_id = #{parentId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},

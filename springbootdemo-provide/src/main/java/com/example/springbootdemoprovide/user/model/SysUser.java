@@ -33,7 +33,7 @@ public class SysUser {
 
     private Date updateTime;
 
-    private Set<SysRole> sysRoleList;
+    private Set<SysRole> sysRoles;
 
     public SysUser(Long id, String username, String password) {
         this.id = id;
@@ -165,11 +165,11 @@ public class SysUser {
         this.updateTime = updateTime;
     }
 
-    public Set<SysRole> getSysRoleList() {
-        return sysRoleList;
+    public Set<SysRole> getSysRoles() {
+        return sysRoles;
     }
 
-    public void setSysRoleList(Set<SysRole> sysRoleList) {
-        this.sysRoleList = sysRoleList;
+    public void setSysRoles(Set<SysRole> sysRoles) {
+        this.sysRoles = sysRoles;
     }
 }
