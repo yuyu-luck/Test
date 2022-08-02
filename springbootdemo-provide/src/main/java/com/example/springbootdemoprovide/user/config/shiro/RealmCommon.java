@@ -1,16 +1,22 @@
 package com.example.springbootdemoprovide.user.config.shiro;//package com.example.commom.shiro;
 
+import com.example.springbootdemoprovide.user.mapper.SysUserMapper;
 import com.example.springbootdemoprovide.user.model.SysPermission;
 import com.example.springbootdemoprovide.user.model.SysRole;
 import com.example.springbootdemoprovide.user.model.SysUser;
+import com.example.springbootdemoprovide.user.service.SysUserService;
+import com.example.springbootdemoprovide.user.vo.LoginUserVo;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Set;
@@ -21,9 +27,13 @@ import java.util.Set;
  */
 public class RealmCommon extends AuthorizingRealm {
 
+    @Autowired
+    private SysUserService sysUserService;
+
+
     @Override
-    public void setName(String name) {
-        super.setName("RealmCommon");
+    public String getName() {
+        return this.getClass().getSimpleName();
     }
 
 
@@ -40,7 +50,7 @@ public class RealmCommon extends AuthorizingRealm {
         //2.构造认证数据
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        Set<SysRole> roles = user.getSysRoleList();
+        Set<SysRole> roles = user.getSysRoles();
         if (CollectionUtils.isEmpty(roles)) {
             //用户没有角色
             throw new AuthorizationException();
@@ -67,7 +77,30 @@ public class RealmCommon extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        try {
+            //1、从token中获取当前用户的信息
+            String username=(String)authenticationToken.getPrincipal();
+            //2、调用根据用户名查询的方法
+           SysUser user= sysUserService.findByName(username);
+           //3、判断user是否为空，不为空则表示用户存在
+            if(user!=null){
+                //创建登录用户对象
+                LoginUserVo loginUserVo=new LoginUserVo(user,null,null);
+                //创建盐值（以用户名作为盐值）
+                ByteSource salt=ByteSource.Util.bytes(user.getUsername());
+                //验证登录密码是否正确
+
+                SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(user.getUsername(),
+                 user.getPassword(),salt,this.getName());
+                return info;
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
+
     }
 }
 
