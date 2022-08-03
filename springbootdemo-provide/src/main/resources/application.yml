@@ -1,40 +1,38 @@
 eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:7001/eureka
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:7001/eureka
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com/example/springbootdemoprovide/user/model
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com/example/springbootdemoprovide/user/model
 server:
-  port: 7002
+    port: 7002
 spring:
-  application:
-    name: provide
-  thymeleaf:
-    #关闭缓存
-    cache: false
-    #资源存放的路径
-    prefix: classpath:/templates/
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: sun
-    password: 1234
-    type: com.alibaba.druid.pool.DruidDataSource
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  task:
-    execution:
-      shutdown:
-        await-termination: false
-        await-termination-period: 10s
-    name: springbootdemo-provide
-    scheduling:
-      pool:
-        size: 10
-      thread-name-prefix: hanhan
+    application:
+        name: provide
+    datasource:
+        password: 1234
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: sun
+    mvc:
+        pathmatch:
+            matching-strategy: ant_path_matcher
+    task:
+        execution:
+            shutdown:
+                await-termination: false
+                await-termination-period: 10s
+        name: springbootdemo-provide
+        scheduling:
+            pool:
+                size: 10
+            thread-name-prefix: hanhan
+    thymeleaf:
+        cache: false
+        prefix: classpath:templates
+        mode: LEGACYHTML5
 swagger:
-  enabled: true
+    enabled: true
