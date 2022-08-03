@@ -160,6 +160,6 @@ public class UserController {
     @RequestMapping("/hello")
     public String hello(HttpServletRequest request) {
         request.setAttribute("name","nice to meet you");
-        return "hello";
+        return "hello.html";
     }
 }
