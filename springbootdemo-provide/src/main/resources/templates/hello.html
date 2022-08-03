@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!--导入thymeleaf的名称空间-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--th:text 为 Thymeleaf 属性，用于获取指定属性的值-->
+<!--/*@thymesVar id="name" type="templates"*/-->
+<h1 th:text="'欢迎来到'+${name}"></h1>
+<!--a标签传递参数
+th:href="@{'doc/'+${modules.moduleId}+'/'+${item.gradeId}+'/list'}"
+th:href="@{/quartz/pause(name=${job.name},group=${job.group})}"
+-->
+<td><!--/*@thymesVar id="name" type="templates"*/-->
+
+</body>
+</html>
