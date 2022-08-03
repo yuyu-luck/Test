@@ -272,7 +272,9 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>**/*.*</include>
+                    <include>*.yml</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.html</include>
                 </includes>
             </resource>
         </resources>
