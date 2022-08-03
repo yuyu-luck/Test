@@ -1,15 +1,21 @@
 package com.example.springbootdemoprovide.user.controller;
 
 import com.example.springbootdemoprovide.dictionary.CommonData;
+import com.example.springbootdemoprovide.user.model.SysUser;
 import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
 import com.example.springbootdemoprovide.user.service.TokenService;
 import com.example.springbootdemoprovide.user.service.UserService;
+import com.example.springbootdemoprovide.user.vo.LoginUserVo;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.RedisTemplate;
 //import org.springframework.data.redis.core.ValueOperations;
@@ -18,12 +24,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -43,6 +47,28 @@ public class UserController {
     private User user;
 
     private Token token;
+
+    @PostMapping("/login")
+    public String login(SysUser sysUser, HttpServletRequest request){
+         //1、获取登录主体
+         Subject subject= SecurityUtils.getSubject();
+         //2、创建令牌对象
+         UsernamePasswordToken token=new UsernamePasswordToken(sysUser.getUsername(),sysUser.getPassword());
+         try {
+            //3、执行登录
+            subject.login(token);
+            //4、获取当前登录对象
+            LoginUserVo loginUserVo=(LoginUserVo)subject.getPrincipal();
+            //5、将当前对象保存到Session
+            request.getSession().setAttribute("loginUser",loginUserVo.getSysUser());
+            //6、进入后台主页面
+            return "main";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+           return "redirect:/login.jsp";
+
+    }
 
 //    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 //    public User get1(@PathVariable Integer id) {return user;}
@@ -131,7 +157,9 @@ public class UserController {
 //    }
 
     @RequestMapping("hello")
-    public String hello() {
-        return "欢迎来到网关页面";
+    public String hello(Map<String, Object> map) {
+        //通过 map 向前台页面传递数据
+        map.put("name", "中原工学院");
+        return "hello";
     }
 }
