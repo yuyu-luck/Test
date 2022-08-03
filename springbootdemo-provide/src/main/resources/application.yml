@@ -12,6 +12,13 @@ server:
 spring:
   application:
     name: provide
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML5
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
   datasource:
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: sun
