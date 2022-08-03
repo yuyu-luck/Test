@@ -27,10 +27,14 @@
         <module>springbootdemo-entity</module>
         <module>springbootdemo-eureka</module>
         <module>springbootdemo-gateway</module>
-        <module>common</module>
     </modules>
 
     <dependencies>
+        <!--Thymeleaf 启动器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
         <!--分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
