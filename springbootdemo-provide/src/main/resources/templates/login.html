@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>登录界面</h3>
+<form method="post" action="/hello">
+    <div class="form-group">
+        <label>账号：</label>
+        <!--文本框的赋值-->
+        <input type="text" class="form-control" placeholder="请输入账号" name="username">
+    </div>
+    <div class="form-group">
+        <label>密码：</label>
+        <!--文本框的赋值-->
+        <input type="text" class="form-control" placeholder="请输入密码" name="password">
+    </div>
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputEmail1">邮箱地址</label>-->
+<!--        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" th:value="${emp.getEmail()}">-->
+<!--    </div>-->
+<!--    &lt;!&ndash;单选按钮的赋值&ndash;&gt;-->
+<!--    <div class="form-group" th:value="${emp.getGender()}">-->
+<!--        <label class="radio-inline">-->
+<!--            <input type="radio" name="gender" id="inlineRadio1" th:checked="${emp.getGender()==1}"> 男-->
+<!--        </label>-->
+<!--        <label class="radio-inline">-->
+<!--            <input type="radio" name="gender" id="inlineRadio2"  th:checked="${emp.getGender()==0}"> 女-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;下拉框的取值赋值&ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <select class="form-control" name="department.id">-->
+<!--            <option th:each="dept:${department}" th:value="${dept.getId()}"-->
+<!--                    th:selected="${dept.getId()==emp.getDepartment().getId()}">[[${dept.getDepartmentName()}]]</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;对于日期格式的处理&ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label>生日：</label>-->
+<!--        <input type="text" class="form-control" placeholder="birth" name="birth" th:value="${#dates.format(emp.getBirth(),'yyyy-MM-dd')}">-->
+<!--    </div>-->
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+</body>
+</html>
