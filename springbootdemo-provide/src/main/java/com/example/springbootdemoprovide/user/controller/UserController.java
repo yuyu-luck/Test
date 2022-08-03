@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-//@RequestMapping("/user")
+@RequestMapping("/user")
 @Api(tags = "用户登录与注册")
 public class UserController {
 
