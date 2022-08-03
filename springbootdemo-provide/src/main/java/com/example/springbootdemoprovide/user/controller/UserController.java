@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 @Api(tags = "用户登录与注册")
 public class UserController {
@@ -158,8 +158,23 @@ public class UserController {
 //    }
 
     @RequestMapping("/hello")
-    public String hello(HttpServletRequest request) {
-        request.setAttribute("name","nice to meet you");
-        return "hello.html";
+    @ResponseBody
+    public ModelAndView hello() {
+       //request.setAttribute("name","nice to meet you");
+        ModelAndView mode=new ModelAndView();
+        mode.addObject("name","aaaaaaa");
+        mode.setViewName("hello");
+        return mode;
     }
+
+    @RequestMapping
+    @ResponseBody
+    public ModelAndView index() {
+        //request.setAttribute("name","nice to meet you");
+        ModelAndView mode=new ModelAndView();
+        mode.setViewName("login");
+        return mode;
+    }
+
+
 }
