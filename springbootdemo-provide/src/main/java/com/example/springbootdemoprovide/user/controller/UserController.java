@@ -158,10 +158,8 @@ public class UserController {
 //    }
 
     @RequestMapping("/hello")
-    public ModelAndView hello() {
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("name", "中原工学院");
-        modelAndView.setViewName("hello");
-        return modelAndView;
+    public String hello(HttpServletRequest request) {
+        request.setAttribute("name","nice to meet you");
+        return "hello";
     }
 }
