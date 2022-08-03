@@ -13,12 +13,11 @@ spring:
   application:
     name: provide
   thymeleaf:
+    #关闭缓存
     cache: false
-    encoding: utf-8
-    mode: HTML5
-    enabled: true
+    #资源存放的路径
     prefix: classpath:/templates/
-    suffix: .html
+
   datasource:
     url: jdbc:mysql://localhost:3306/dda?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: sun
