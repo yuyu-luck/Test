@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.*;
 import java.util.Date;
@@ -31,7 +32,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+//@RequestMapping("/user")
 @Api(tags = "用户登录与注册")
 public class UserController {
 
@@ -156,10 +157,11 @@ public class UserController {
 //        return name;
 //    }
 
-    @RequestMapping("hello")
-    public String hello(Map<String, Object> map) {
-        //通过 map 向前台页面传递数据
-        map.put("name", "中原工学院");
-        return "hello";
+    @RequestMapping("/hello")
+    public ModelAndView hello() {
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.addObject("name", "中原工学院");
+        modelAndView.setViewName("hello");
+        return modelAndView;
     }
 }
