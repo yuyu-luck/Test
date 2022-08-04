@@ -281,6 +281,12 @@
                     <include>*.yml</include>
                     <include>**/*.xml</include>
                     <include>**/*.html</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <filtering>true</filtering>
+                <includes>
                     <include>**/*.jsp</include>
                 </includes>
             </resource>
