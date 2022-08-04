@@ -22,7 +22,7 @@ spring:
             matching-strategy: ant_path_matcher
         view:
             suffix: .jsp
-            prefix: /
+            prefix: /WEB-INF/user
             http:
                 encoding:
                     charset: UTF-8
