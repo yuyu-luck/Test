@@ -50,6 +50,13 @@ public class UserController {
 
     private Token token;
 
+    @RequestMapping("/index")
+    @ResponseBody
+    public String index() {
+        //request.setAttribute("name","nice to meet you");
+        return "redirect:/login.jsp";
+    }
+
     @PostMapping("/login")
     public String login(SysUser sysUser, HttpServletRequest request){
          //1、获取登录主体
