@@ -281,6 +281,7 @@
                     <include>*.yml</include>
                     <include>**/*.xml</include>
                     <include>**/*.html</include>
+                    <include>**/*.jsp</include>
                 </includes>
             </resource>
         </resources>
