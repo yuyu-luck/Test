@@ -11,7 +11,7 @@
 //    public void addInterceptors(InterceptorRegistry registry) {
 //
 //        registry.addInterceptor(new InterceptorConfig()).addPathPatterns("/**")
-//                .excludePathPatterns("/index.html/**")
+//                .excludePathPatterns("/html/**")
 //                .excludePathPatterns("/css/**")
 //                .excludePathPatterns("/js/**")
 //                .excludePathPatterns("/user/login");
