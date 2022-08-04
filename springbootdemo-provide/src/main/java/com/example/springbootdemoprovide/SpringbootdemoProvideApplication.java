@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableEurekaClient
 @MapperScan(basePackages = {"com.example.springbootdemoprovide.user.mapper"})
 //@EnableCaching
-@EnableWebMvc
+//@EnableWebMvc
 public class SpringbootdemoProvideApplication {
 
     public static void main(String[] args) {
