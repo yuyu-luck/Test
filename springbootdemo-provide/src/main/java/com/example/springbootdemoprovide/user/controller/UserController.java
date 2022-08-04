@@ -44,7 +44,6 @@ public class UserController {
     private Token token;
 
     @RequestMapping("/index")
-    @ResponseBody
     public String index() {
         //request.setAttribute("name","nice to meet you");
         return "login";
