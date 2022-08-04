@@ -22,15 +22,12 @@ spring:
             matching-strategy: ant_path_matcher
         view:
             suffix: .jsp
-            prefix: /WEB-INF/user
+            prefix: /WEB-INF/user/
             http:
                 encoding:
                     charset: UTF-8
                     enabled: true
                     force: true
-        resources:
-            static-locations: classpath:/webapp/
-
     task:
         execution:
             shutdown:
