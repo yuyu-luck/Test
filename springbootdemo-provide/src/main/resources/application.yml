@@ -20,6 +20,17 @@ spring:
     mvc:
         pathmatch:
             matching-strategy: ant_path_matcher
+        view:
+            suffix: .jsp
+            prefix: /
+            http:
+                encoding:
+                    charset: UTF-8
+                    enabled: true
+                    force: true
+        resources:
+            static-locations: classpath:/webapp/
+
     task:
         execution:
             shutdown:
@@ -34,5 +45,7 @@ spring:
 #        cache: false
 #        prefix: classpath:/templates/
 #        mode:  LEGACYHTML5
+
+
 swagger:
     enabled: true
