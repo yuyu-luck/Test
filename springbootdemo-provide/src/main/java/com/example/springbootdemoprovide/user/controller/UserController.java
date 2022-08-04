@@ -1,6 +1,5 @@
 package com.example.springbootdemoprovide.user.controller;
 
-import com.example.springbootdemoprovide.dictionary.CommonData;
 import com.example.springbootdemoprovide.user.model.SysUser;
 import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
@@ -22,15 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 //import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/user")
@@ -75,7 +68,7 @@ public class UserController {
         }catch (Exception e){
             e.printStackTrace();
         }
-           return "redirect:/login.jsp";
+           return "/page/login.jsp";
 
     }
 
