@@ -30,9 +30,9 @@ spring:
             pool:
                 size: 10
             thread-name-prefix: hanhan
-    thymeleaf:
-        cache: false
-        prefix: classpath:/templates/
-        mode:  LEGACYHTML5
+#    thymeleaf:
+#        cache: false
+#        prefix: classpath:/templates/
+#        mode:  LEGACYHTML5
 swagger:
     enabled: true

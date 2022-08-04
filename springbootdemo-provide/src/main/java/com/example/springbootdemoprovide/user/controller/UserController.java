@@ -158,26 +158,33 @@ public class UserController {
 //        return name;
 //    }
 
-    @RequestMapping("/hello")
-    @ResponseBody
-    public ModelAndView hello() {
-       //request.setAttribute("name","nice to meet you");
-        ModelAndView mode=new ModelAndView();
-        mode.addObject("name","aaaaaaa");
-        mode.setViewName("hello");
-        return mode;
-    }
+    /**
+     * thymeleaf 模板
+      * @return
+     */
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public ModelAndView hello() {
+//       //request.setAttribute("name","nice to meet you");
+//        ModelAndView mode=new ModelAndView();
+//        mode.addObject("name","aaaaaaa");
+//        mode.setViewName("hello");
+//        return mode;
+//    }
 
 
-
-    @RequestMapping("/index")
-    @ResponseBody
-    public ModelAndView index() {
-        //request.setAttribute("name","nice to meet you");
-        ModelAndView mode=new ModelAndView();
-        mode.setViewName("login");
-        return mode;
-    }
+    /**
+     * thymeleaf 模板
+     * @return
+     */
+//    @RequestMapping("/index")
+//    @ResponseBody
+//    public ModelAndView index() {
+//        //request.setAttribute("name","nice to meet you");
+//        ModelAndView mode=new ModelAndView();
+//        mode.setViewName("login");
+//        return mode;
+//    }
 
 
 
