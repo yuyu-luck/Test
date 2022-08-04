@@ -46,7 +46,7 @@ public class UserController {
     @RequestMapping("/index")
     public String index() {
         //request.setAttribute("name","nice to meet you");
-        return "login.jsp";
+        return "login";
     }
 
     @PostMapping("/login")
