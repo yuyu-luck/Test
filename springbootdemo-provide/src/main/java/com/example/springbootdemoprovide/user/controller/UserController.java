@@ -157,14 +157,23 @@ public class UserController {
 //        return name;
 //    }
 
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public ModelAndView hello() {
+//       //request.setAttribute("name","nice to meet you");
+//        ModelAndView mode=new ModelAndView();
+//        mode.addObject("name","aaaaaaa");
+//        mode.setViewName("hello");
+//        return mode;
+//    }
+
     @RequestMapping("/hello")
     @ResponseBody
-    public ModelAndView hello() {
-       //request.setAttribute("name","nice to meet you");
-        ModelAndView mode=new ModelAndView();
-        mode.addObject("name","aaaaaaa");
-        mode.setViewName("hello");
-        return mode;
+    public String hello(HttpServletRequest request) {
+        //request.setAttribute("name","nice to meet you");
+        request.setAttribute("name","aaaaaaa");
+
+        return "hello";
     }
 
     @RequestMapping("/index")
@@ -175,6 +184,7 @@ public class UserController {
         mode.setViewName("login");
         return mode;
     }
+
 
 
 }
