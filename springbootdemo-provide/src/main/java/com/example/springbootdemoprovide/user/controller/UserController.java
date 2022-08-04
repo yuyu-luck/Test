@@ -54,7 +54,7 @@ public class UserController {
     @ResponseBody
     public String index() {
         //request.setAttribute("name","nice to meet you");
-        return "redirect:/login.jsp";
+        return "login";
     }
 
     @PostMapping("/login")
