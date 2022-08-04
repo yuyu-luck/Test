@@ -167,7 +167,7 @@ public class UserController {
         return mode;
     }
 
-    @RequestMapping
+    @RequestMapping("/index")
     @ResponseBody
     public ModelAndView index() {
         //request.setAttribute("name","nice to meet you");
