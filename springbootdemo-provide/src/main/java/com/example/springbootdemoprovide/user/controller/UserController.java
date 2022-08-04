@@ -158,35 +158,16 @@ public class UserController {
 //        return name;
 //    }
 
-//    @RequestMapping("/hello")
-//    @ResponseBody
-//    public ModelAndView hello() {
-//       //request.setAttribute("name","nice to meet you");
-//        ModelAndView mode=new ModelAndView();
-//        mode.addObject("name","aaaaaaa");
-//        mode.setViewName("hello");
-//        return mode;
-//    }
-
-//    @RequestMapping("/hello")
-//    @ResponseBody
-//    public String hello(HttpServletRequest request) {
-//        //request.setAttribute("name","nice to meet you");
-//        request.setAttribute("name","aaaaaaa");
-//
-//        return "hello";
-//    }
-
-    /**
-     * 在Model里存入一个用户信息
-     * @return hello页面
-     */
     @RequestMapping("/hello")
     @ResponseBody
-    public String returnModelAndView(Model model){
-        model.addAttribute("name","aaaaaaa");
-        return "hello";
+    public ModelAndView hello() {
+       //request.setAttribute("name","nice to meet you");
+        ModelAndView mode=new ModelAndView();
+        mode.addObject("name","aaaaaaa");
+        mode.setViewName("hello");
+        return mode;
     }
+
 
 
     @RequestMapping("/index")
