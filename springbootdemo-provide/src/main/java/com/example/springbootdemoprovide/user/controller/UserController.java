@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 //import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -167,14 +168,26 @@ public class UserController {
 //        return mode;
 //    }
 
+//    @RequestMapping("/hello")
+//    @ResponseBody
+//    public String hello(HttpServletRequest request) {
+//        //request.setAttribute("name","nice to meet you");
+//        request.setAttribute("name","aaaaaaa");
+//
+//        return "hello";
+//    }
+
+    /**
+     * 在Model里存入一个用户信息
+     * @return hello页面
+     */
     @RequestMapping("/hello")
     @ResponseBody
-    public String hello(HttpServletRequest request) {
-        //request.setAttribute("name","nice to meet you");
-        request.setAttribute("name","aaaaaaa");
-
+    public String returnModelAndView(Model model){
+        model.addAttribute("name","aaaaaaa");
         return "hello";
     }
+
 
     @RequestMapping("/index")
     @ResponseBody
