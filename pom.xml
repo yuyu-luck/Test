@@ -285,6 +285,7 @@
             </resource>
             <resource>
                 <directory>src/main/webapp</directory>
+                <targetPath>META-INF/user</targetPath>
                 <filtering>true</filtering>
                 <includes>
                     <include>**/*.jsp</include>
