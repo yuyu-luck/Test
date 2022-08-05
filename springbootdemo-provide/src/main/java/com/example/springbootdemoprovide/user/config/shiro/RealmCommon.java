@@ -90,7 +90,7 @@ public class RealmCommon extends AuthorizingRealm {
                 ByteSource salt=ByteSource.Util.bytes(user.getUsername());
                 //6、验证登录密码是否正确
                  //参数1：用户名 参数2：密码 参数3：加密的盐值 参数4：域名（填写任意字符串)
-                SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(user.getUsername(),
+                SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(loginUserVo,
                  user.getPassword(),salt,this.getName());
                 //7、如果info对象正常运行，表示登录成功
                 return info;
