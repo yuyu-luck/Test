@@ -7,7 +7,7 @@
         <!-- shiro的核心安全接口 -->
         <property name="securityManager" ref="securityManager"/>
         <!-- 要求登录时的连接 -->
-        <property name="loginUrl" value="/user/login"></property>
+        <property name="loginUrl" value="/loginUI.do"></property>
         <!-- 登录成功后要跳转的连接(此处已经在登录中处理了) -->
 <!--         <property name="successUrl" value="/main.jsp"></property>-->
         <!-- 访问未对其授权的资源时,要跳转的连接
