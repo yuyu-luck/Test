@@ -107,13 +107,6 @@ public class RealmCommon extends AuthorizingRealm {
 
     }
 
-    public static Subject getSubject() {
-        Subject subject = ThreadContext.getSubject();
-        if (subject == null) {
-            subject = (new Subject.Builder()).buildSubject();
-            ThreadContext.bind(subject);
-        }
-        return subject;
-    }
+
 }
 
