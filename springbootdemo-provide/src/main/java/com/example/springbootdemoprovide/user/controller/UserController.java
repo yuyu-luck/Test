@@ -1,5 +1,6 @@
 package com.example.springbootdemoprovide.user.controller;
 
+import com.example.springbootdemoprovide.user.config.shiro.RealmCommon;
 import com.example.springbootdemoprovide.user.model.SysUser;
 import com.example.springbootdemoprovide.user.model.Token;
 import com.example.springbootdemoprovide.user.model.User;
@@ -54,11 +55,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,@RequestParam("password") String password, HttpServletRequest request){
          //1、获取登录主体
-         Subject subject= ThreadContext.getSubject();
-        if (subject == null) {
-            subject = (new Subject.Builder()).buildSubject();
-            ThreadContext.bind(subject);
-        }
+         Subject subject=RealmCommon.getSubject();
          //2、创建令牌对象
          UsernamePasswordToken token=new UsernamePasswordToken(username,password);
          try {
