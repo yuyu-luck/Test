@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Name;
 import javax.servlet.http.*;
 
 @Controller
@@ -50,11 +51,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody SysUser sysUser, HttpServletRequest request){
+    public String login(@RequestParam("username") String username,@RequestParam("password") String password, HttpServletRequest request){
          //1、获取登录主体
          Subject subject= SecurityUtils.getSubject();
          //2、创建令牌对象
-         UsernamePasswordToken token=new UsernamePasswordToken(sysUser.getUsername(),sysUser.getPassword());
+         UsernamePasswordToken token=new UsernamePasswordToken(username,password);
          try {
             //3、执行登录
             subject.login(token);
