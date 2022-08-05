@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(SysUser sysUser, HttpServletRequest request){
+    public String login(@RequestBody SysUser sysUser, HttpServletRequest request){
          //1、获取登录主体
          Subject subject= SecurityUtils.getSubject();
          //2、创建令牌对象
@@ -67,7 +67,7 @@ public class UserController {
         }catch (Exception e){
             e.printStackTrace();
         }
-           return "";
+           return "login";
 
     }
 
