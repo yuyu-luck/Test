@@ -50,7 +50,6 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    @ResponseBody
     public String login(@RequestBody SysUser sysUser, HttpServletRequest request){
          //1、获取登录主体
          Subject subject= SecurityUtils.getSubject();
