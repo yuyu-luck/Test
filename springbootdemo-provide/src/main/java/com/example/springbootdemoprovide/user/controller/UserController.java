@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ThreadContext;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.RedisTemplate;
 //import org.springframework.data.redis.core.ValueOperations;
@@ -53,7 +54,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,@RequestParam("password") String password, HttpServletRequest request){
          //1、获取登录主体
-         Subject subject= SecurityUtils.getSubject();
+         Subject subject= ThreadContext.getSubject();
          //2、创建令牌对象
          UsernamePasswordToken token=new UsernamePasswordToken(username,password);
          try {
