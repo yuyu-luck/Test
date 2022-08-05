@@ -41,6 +41,11 @@ public class SysUser {
         this.password = password;
     }
 
+    public SysUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public SysUser(Long id, String username, String password, String nickname, String headImgUrl, String phone, String telephone, String email, Date birthday, String sex, Integer status, Date createTime, Date updateTime) {
         this.id = id;
         this.username = username;
