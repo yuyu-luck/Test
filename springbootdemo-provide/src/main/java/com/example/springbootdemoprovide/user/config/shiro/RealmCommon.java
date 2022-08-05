@@ -84,14 +84,15 @@ public class RealmCommon extends AuthorizingRealm {
            SysUser user= sysUserService.findByName(username);
            //3、判断user是否为空，不为空则表示用户存在
             if(user!=null){
-                //创建登录用户对象
+                //4、创建登录用户对象
                 LoginUserVo loginUserVo=new LoginUserVo(user,null,null);
-                //创建盐值（以用户名作为盐值）
+                //5、创建盐值（以用户名作为盐值）
                 ByteSource salt=ByteSource.Util.bytes(user.getUsername());
-                //验证登录密码是否正确
-
+                //6、验证登录密码是否正确
+                 //参数1：用户名 参数2：密码 参数3：加密的盐值 参数4：域名（填写任意字符串)
                 SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(user.getUsername(),
                  user.getPassword(),salt,this.getName());
+                //7、如果info对象正常运行，表示登录成功
                 return info;
             }
 
@@ -99,6 +100,7 @@ public class RealmCommon extends AuthorizingRealm {
         }catch (Exception e){
             e.printStackTrace();
         }
+        //登录失败
         return null;
 
     }
