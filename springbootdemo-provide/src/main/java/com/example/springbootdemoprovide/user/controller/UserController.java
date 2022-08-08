@@ -179,14 +179,14 @@ public class UserController {
      * thymeleaf 模板
      * @return ModelAndView
      */
-    @RequestMapping("/index")
-    @ResponseBody
-    public ModelAndView index() {
-        //request.setAttribute("name","nice to meet you");
-        ModelAndView mode=new ModelAndView();
-        mode.setViewName("login");
-        return mode;
-    }
+//    @RequestMapping("/index")
+//    @ResponseBody
+//    public ModelAndView index() {
+//        //request.setAttribute("name","nice to meet you");
+//        ModelAndView mode=new ModelAndView();
+//        mode.setViewName("login");
+//        return mode;
+//    }
 
 
 
