@@ -46,33 +46,33 @@ public class UserController {
 
     private Token token;
 
-//    @RequestMapping("/index")
-//    public String index() {
-//        //request.setAttribute("name","nice to meet you");
-//        return "login";
-//    }
+    @RequestMapping("/index")
+    public String index() {
+        //request.setAttribute("name","nice to meet you");
+        return "login";
+    }
 
-//    @PostMapping("/login")
-//    public String login(@RequestParam("username") String username,@RequestParam("password") String password, HttpServletRequest request){
-//         //1、获取登录主体
-//         Subject subject= SecurityUtils.getSubject();
-//         //2、创建令牌对象
-//         UsernamePasswordToken token=new UsernamePasswordToken(username,password);
-//         try {
-//            //3、执行登录
-//            subject.login(token);
-//            //4、获取当前登录对象
-//            LoginUserVo loginUserVo=(LoginUserVo)subject.getPrincipal();
-//            //5、将当前对象保存到Session
-//            request.getSession().setAttribute("loginUser",loginUserVo.getSysUser());
-//            //6、进入后台主页面
-//            return "main";
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//           return "login";
-//
-//    }
+    @PostMapping("/login")
+    public String login(@RequestParam("username") String username,@RequestParam("password") String password, HttpServletRequest request){
+         //1、获取登录主体
+         Subject subject= SecurityUtils.getSubject();
+         //2、创建令牌对象
+         UsernamePasswordToken token=new UsernamePasswordToken(username,password);
+         try {
+            //3、执行登录
+            subject.login(token);
+            //4、获取当前登录对象
+            LoginUserVo loginUserVo=(LoginUserVo)subject.getPrincipal();
+            //5、将当前对象保存到Session
+            request.getSession().setAttribute("loginUser",loginUserVo.getSysUser());
+            //6、进入后台主页面
+            return "main";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+           return "login";
+
+    }
 
 //    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 //    public User get1(@PathVariable Integer id) {return user;}
