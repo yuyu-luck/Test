@@ -1,77 +1,77 @@
-package com.example.springbootdemoprovide.user.config.shiro;
-
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.codec.Base64;
-import org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator;
-import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
-import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.web.mgt.CookieRememberMeManager;
-import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.servlet.SimpleCookie;
-import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
-
-import javax.servlet.Filter;
-import java.util.LinkedHashMap;
-
-/**
- * Shiro的配置类
- */
-@Configuration
-public class ShiroConfig {
-    /**
-     * 创建ShiroFilterFactoryBean
-     */
-      public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager securityManager){
-
-          //定义返回对象
-          ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-
-          //必须设置 SecurityManager,Shiro的核心安全接口
-          shiroFilterFactoryBean.setSecurityManager(securityManager);
-          //这里的/login是后台的接口名,非页面，如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-          shiroFilterFactoryBean.setLoginUrl("/login");
-          //这里的/index是后台的接口名,非页面,登录成功后要跳转的链接
-          shiroFilterFactoryBean.setSuccessUrl("/main");
-          //未授权界面,该配置无效，并不会进行页面跳转
-          shiroFilterFactoryBean.setUnauthorizedUrl("/sessionInvalid");
-
-          //限制同一帐号同时在线的个数
-          LinkedHashMap<String, Filter> filtersMap = new LinkedHashMap<>();
-//          filtersMap.put("kickout", kickoutSessionControlFilter());
-          shiroFilterFactoryBean.setFilters(filtersMap);
-
-          // 配置访问权限 必须是LinkedHashMap，因为它必须保证有序
-          // 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 一定要注意顺序,否则就不好使了
-          LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-          //logout是shiro提供的过滤器
-          filterChainDefinitionMap.put("/logout", "logout");
-          //配置不登录可以访问的资源，anon 表示资源都可以匿名访问
-          filterChainDefinitionMap.put("/swagger-ui.html", "anon");
-          filterChainDefinitionMap.put("/webjars/**", "anon");
-          filterChainDefinitionMap.put("/swagger-resources/**", "anon");
-          filterChainDefinitionMap.put("/v2/**", "anon");
-          filterChainDefinitionMap.put("/u/**", "anon");
-          filterChainDefinitionMap.put("/swagger/**", "anon");
-          filterChainDefinitionMap.put("/doc.html", "anon");
-          filterChainDefinitionMap.put("/simpleBillRepertory/getShareStockUrl", "anon");
-          filterChainDefinitionMap.put("/alicheck", "anon");
-          filterChainDefinitionMap.put("/api-docs/**", "anon");
-          //此时访问/userInfo/del需要del权限,在自定义Realm中为用户授权。
-          //filterChainDefinitionMap.put("/userInfo/del", "perms["userInfo:del"]");
-
-          //其他资源都需要认证  authc 表示需要认证才能进行访问
-          filterChainDefinitionMap.put("/**", "kickout,authc");
-
-          shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-
-          return shiroFilterFactoryBean;
-      }
+//package com.example.springbootdemoprovide.user.config.shiro;
+//
+//import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+//import org.apache.shiro.codec.Base64;
+//import org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator;
+//import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
+//import org.apache.shiro.spring.LifecycleBeanPostProcessor;
+//import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
+//import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+//import org.apache.shiro.web.mgt.CookieRememberMeManager;
+//import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+//import org.apache.shiro.web.servlet.SimpleCookie;
+//import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+//import org.springframework.beans.factory.annotation.Qualifier;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.DependsOn;
+//
+//import javax.servlet.Filter;
+//import java.util.LinkedHashMap;
+//
+///**
+// * Shiro的配置类
+// */
+//@Configuration
+//public class ShiroConfig {
+//    /**
+//     * 创建ShiroFilterFactoryBean
+//     */
+//      public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager securityManager){
+//
+//          //定义返回对象
+//          ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+//
+//          //必须设置 SecurityManager,Shiro的核心安全接口
+//          shiroFilterFactoryBean.setSecurityManager(securityManager);
+//          //这里的/login是后台的接口名,非页面，如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+//          shiroFilterFactoryBean.setLoginUrl("/login");
+//          //这里的/index是后台的接口名,非页面,登录成功后要跳转的链接
+//          shiroFilterFactoryBean.setSuccessUrl("/main");
+//          //未授权界面,该配置无效，并不会进行页面跳转
+//          shiroFilterFactoryBean.setUnauthorizedUrl("/sessionInvalid");
+//
+//          //限制同一帐号同时在线的个数
+//          LinkedHashMap<String, Filter> filtersMap = new LinkedHashMap<>();
+////          filtersMap.put("kickout", kickoutSessionControlFilter());
+//          shiroFilterFactoryBean.setFilters(filtersMap);
+//
+//          // 配置访问权限 必须是LinkedHashMap，因为它必须保证有序
+//          // 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 一定要注意顺序,否则就不好使了
+//          LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+//          //logout是shiro提供的过滤器
+//          filterChainDefinitionMap.put("/logout", "logout");
+//          //配置不登录可以访问的资源，anon 表示资源都可以匿名访问
+//          filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+//          filterChainDefinitionMap.put("/webjars/**", "anon");
+//          filterChainDefinitionMap.put("/swagger-resources/**", "anon");
+//          filterChainDefinitionMap.put("/v2/**", "anon");
+//          filterChainDefinitionMap.put("/u/**", "anon");
+//          filterChainDefinitionMap.put("/swagger/**", "anon");
+//          filterChainDefinitionMap.put("/doc.html", "anon");
+//          filterChainDefinitionMap.put("/simpleBillRepertory/getShareStockUrl", "anon");
+//          filterChainDefinitionMap.put("/alicheck", "anon");
+//          filterChainDefinitionMap.put("/api-docs/**", "anon");
+//          //此时访问/userInfo/del需要del权限,在自定义Realm中为用户授权。
+//          //filterChainDefinitionMap.put("/userInfo/del", "perms["userInfo:del"]");
+//
+//          //其他资源都需要认证  authc 表示需要认证才能进行访问
+//          filterChainDefinitionMap.put("/**", "kickout,authc");
+//
+//          shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+//
+//          return shiroFilterFactoryBean;
+//      }
 
     /**
      * 并发登录控制
@@ -99,38 +99,38 @@ public class ShiroConfig {
     /**
      * 创建DefaultWebSecurityManager
      */
-      @Bean(name = "securityManager")
-      public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm){
-          DefaultWebSecurityManager securityManager=new DefaultWebSecurityManager();
-          //关联Realm
-          securityManager.setRealm(userRealm);
-          //配置记住我
-          securityManager.setRememberMeManager(cookieRememberMeManager());
+//      @Bean(name = "securityManager")
+//      public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm){
+//          DefaultWebSecurityManager securityManager=new DefaultWebSecurityManager();
+//          //关联Realm
+//          securityManager.setRealm(userRealm);
+//          //配置记住我
+//          securityManager.setRememberMeManager(cookieRememberMeManager());
           //配置缓存管理器
 //          securityManager.setCacheManager(ehCacheManager());
           //配置session管理器
 //          securityManager.setSessionManager(shiroSessionManager());
-          return securityManager;
-      }
+//          return securityManager;
+//      }
 
 
     /**
      * 创建Realm
      */
-    @Bean(name = "userRealm")
-     public UserRealm getRealm(){
-        UserRealm shiroRealm = new UserRealm();
-        shiroRealm.setCachingEnabled(true);
-        //启用身份验证缓存，即缓存AuthenticationInfo信息，默认false
-        shiroRealm.setAuthenticationCachingEnabled(true);
-        //缓存AuthenticationInfo信息的缓存名称 在ehcache-shiro.xml中有对应缓存的配置
-        shiroRealm.setAuthenticationCacheName("authenticationCache");
-        //启用授权缓存，即缓存AuthorizationInfo信息，默认false
-        shiroRealm.setAuthorizationCachingEnabled(true);
-        //缓存AuthorizationInfo信息的缓存名称  在ehcache-shiro.xml中有对应缓存的配置
-        shiroRealm.setAuthorizationCacheName("authorizationCache");
-         return shiroRealm;
-     }
+//    @Bean(name = "userRealm")
+//     public UserRealm getRealm(){
+//        UserRealm shiroRealm = new UserRealm();
+//        shiroRealm.setCachingEnabled(true);
+//        //启用身份验证缓存，即缓存AuthenticationInfo信息，默认false
+//        shiroRealm.setAuthenticationCachingEnabled(true);
+//        //缓存AuthenticationInfo信息的缓存名称 在ehcache-shiro.xml中有对应缓存的配置
+//        shiroRealm.setAuthenticationCacheName("authenticationCache");
+//        //启用授权缓存，即缓存AuthorizationInfo信息，默认false
+//        shiroRealm.setAuthorizationCachingEnabled(true);
+//        //缓存AuthorizationInfo信息的缓存名称  在ehcache-shiro.xml中有对应缓存的配置
+//        shiroRealm.setAuthorizationCacheName("authorizationCache");
+//         return shiroRealm;
+//     }
 
     /**
      * cookie管理对象;记住我功能,rememberMe管理器
@@ -139,14 +139,14 @@ public class ShiroConfig {
      * @author zhuyongsheng
      * @date 2019/8/15
      */
-    @Bean
-    public CookieRememberMeManager cookieRememberMeManager() {
-        CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
-        cookieRememberMeManager.setCookie(simpleCookie());
-        //rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度(128 256 512 位)
-        cookieRememberMeManager.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
-        return cookieRememberMeManager;
-    }
+//    @Bean
+//    public CookieRememberMeManager cookieRememberMeManager() {
+//        CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
+//        cookieRememberMeManager.setCookie(simpleCookie());
+//        //rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度(128 256 512 位)
+//        cookieRememberMeManager.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
+//        return cookieRememberMeManager;
+//    }
 
     /**
      * cookie对象;会话Cookie模板 ,默认为: JSESSIONID 问题: 与SERVLET容器名冲突,重新定义为sid或rememberMe
@@ -155,20 +155,20 @@ public class ShiroConfig {
      * @author zhuyongsheng
      * @date 2019/8/15
      */
-    @Bean
-    public SimpleCookie simpleCookie() {
-        //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
-        SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
-        /*
-         * 设为true后，只能通过http访问，javascript无法访问
-         * 防止xss读取cookie
-         */
-        simpleCookie.setHttpOnly(true);
-        simpleCookie.setPath("/");
-        //<!-- 记住我cookie生效时间30天 ,单位秒;-->
-        simpleCookie.setMaxAge(2592000);
-        return simpleCookie;
-    }
+//    @Bean
+//    public SimpleCookie simpleCookie() {
+//        //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
+//        SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
+//        /*
+//         * 设为true后，只能通过http访问，javascript无法访问
+//         * 防止xss读取cookie
+//         */
+//        simpleCookie.setHttpOnly(true);
+//        simpleCookie.setPath("/");
+//        //<!-- 记住我cookie生效时间30天 ,单位秒;-->
+//        simpleCookie.setMaxAge(2592000);
+//        return simpleCookie;
+//    }
 
     /**
      * 配置会话管理器，设定会话超时及保存
@@ -295,10 +295,10 @@ public class ShiroConfig {
     /**
      * Shiro生命周期处理器
      */
-    @Bean
-    public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
-        return new LifecycleBeanPostProcessor();
-    }
+//    @Bean
+//    public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
+//        return new LifecycleBeanPostProcessor();
+//    }
 
     /**
      * 开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证
@@ -371,16 +371,16 @@ public class ShiroConfig {
      * @author zhuyongsheng
      * @date 2019/8/15
      */
-    @Bean("sessionIdCookie")
-    public SimpleCookie sessionIdCookie() {
-        //这个参数是cookie的名称
-        SimpleCookie simpleCookie = new SimpleCookie("sid");
-        simpleCookie.setHttpOnly(true);
-        simpleCookie.setPath("/");
-        //maxAge=-1表示浏览器关闭时失效此Cookie
-        simpleCookie.setMaxAge(-1);
-        return simpleCookie;
-    }
+//    @Bean("sessionIdCookie")
+//    public SimpleCookie sessionIdCookie() {
+//        //这个参数是cookie的名称
+//        SimpleCookie simpleCookie = new SimpleCookie("sid");
+//        simpleCookie.setHttpOnly(true);
+//        simpleCookie.setPath("/");
+//        //maxAge=-1表示浏览器关闭时失效此Cookie
+//        simpleCookie.setMaxAge(-1);
+//        return simpleCookie;
+//    }
 
     /**
      * 配置会话ID生成器
@@ -389,10 +389,10 @@ public class ShiroConfig {
      * @author zhuyongsheng
      * @date 2019/8/15
      */
-    @Bean
-    public SessionIdGenerator sessionIdGenerator() {
-        return new JavaUuidSessionIdGenerator();
-    }
+//    @Bean
+//    public SessionIdGenerator sessionIdGenerator() {
+//        return new JavaUuidSessionIdGenerator();
+//    }
 
 
     /**
@@ -464,4 +464,4 @@ public class ShiroConfig {
 
 
 
-}
+//}
